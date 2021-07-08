@@ -1,7 +1,7 @@
 /*
  * @Description: 用户
  * @Date: 2021-07-07 20:30:57
- * @LastEditTime: 2021-07-08 11:47:16
+ * @LastEditTime: 2021-07-08 12:07:56
  */
 
 const router = require("koa-router")();
@@ -18,13 +18,13 @@ router.post("/login", (ctx) => {
             password
         }, jwtScrentKey, { expiresIn: "1d" })
         ctx.body = {
-            success: true,
+            status: true,
             msg: "登陆成功",
             token: `Bearer ${token}`
         }
     } else {
         ctx.body = {
-            success: false,
+            status: false,
             msg: "用户名和密码不匹配"
         }
     }
