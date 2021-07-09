@@ -1,7 +1,7 @@
 /*
  * @Description: 
  * @Date: 2021-07-07 10:54:16
- * @LastEditTime: 2021-07-08 11:09:41
+ * @LastEditTime: 2021-07-09 10:50:43
  */
 const Koa = require('koa');
 const app = new Koa();
@@ -11,7 +11,8 @@ const bodyparser = require('koa-bodyparser');
 const logger = require('koa-logger');
 const routes = require('./routes');
 const koaJWT = require("koa-jwt");
-const { jwtScrentKey } = require("./utils/jwt/secretKey")
+const { jwtScrentKey } = require("./utils/jwt/secretKey");
+require("./ws");
 // error handler
 onerror(app);
 
@@ -28,7 +29,10 @@ app.use(
   koaJWT({
     secret: jwtScrentKey
   }).unless({
-    path: [/^\/user\/login/]
+    path: [
+      /^\/user\/login/,
+      /^\/file\/path/
+    ]
   })
 )
 
@@ -50,5 +54,8 @@ routes.forEach(r => {
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
+
+//  websocket
+
 
 module.exports = app
