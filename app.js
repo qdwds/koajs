@@ -1,7 +1,7 @@
 /*
  * @Description: app 主程序
  * @Date: 2021-07-07 10:54:16
- * @LastEditTime: 2021-07-11 10:39:33
+ * @LastEditTime: 2021-07-11 10:56:42
  */
 const Koa = require('koa');
 const app = new Koa();
@@ -12,7 +12,7 @@ const logger = require('koa-logger');
 const routes = require('./src/routes');
 const koaJWT = require("koa-jwt");
 const { jwtScrentKey } = require("./src/utils/jwt/secretKey");
-const mongoose = require("./configs/mongodb");
+const mongoose = require("./src/configs/mongodb");
 const ws = require("./src/ws");
 
 

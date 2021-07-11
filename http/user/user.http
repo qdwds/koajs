@@ -16,3 +16,20 @@ content-type: application/json;charset=UTF-8
 GET http://localhost:5000/user/all
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJhZG1pbiIsImlhdCI6MTYyNTk2NDUzNiwiZXhwIjoxNjI2MDUwOTM2fQ.mF470Vn5pQBfba4wVXEkB9OwV3IANsI27tXUUmrEsfQ
 ###
+
+POST  http://localhost:5000/user/create
+content-type: application/json;charset=UTF-8
+
+{
+    "username":"del",
+    "password":"admin"
+}
+
+
+### 
+POST  http://localhost:5000/user/del
+content-type: application/json;charset=UTF-8
+
+{
+    "username":"del"
+}

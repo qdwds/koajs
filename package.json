@@ -14,32 +14,24 @@
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
-    "koa-convert": "^1.2.0",
     "koa-json": "^2.0.2",
     "koa-jwt": "^4.0.1",
     "koa-logger": "^3.2.0",
     "koa-onerror": "^4.1.0",
-    "koa-passport": "^4.1.4",
     "koa-router": "^7.4.0",
     "koa-send": "^5.0.1",
     "koa-static": "^5.0.0",
-    "koa2-swagger-ui": "^5.2.0",
     "moment": "^2.29.1",
-    "mongodb": "^3.6.10",
     "mongoose": "^5.13.2",
-    "swagger-jsdoc": "^6.1.0",
     "ws": "^7.5.2"
   },
   "devDependencies": {
     "@types/koa": "^2.13.4",
     "@types/koa-jwt": "^3.3.0",
-    "@types/koa-passport": "^4.0.2",
     "@types/koa-router": "^7.4.3",
-    "@types/mongodb": "^3.6.20",
     "@types/mongoose": "^5.11.97",
     "@types/mysql": "^2.15.19",
     "@types/passport-jwt": "^3.0.5",
-    "@types/swagger-jsdoc": "^6.0.1",
     "nodemon": "^1.19.1"
   }
 }

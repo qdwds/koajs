@@ -1,7 +1,7 @@
 /*
  * @Description: 数据库连接配置
  * @Date: 2021-07-10 21:26:34
- * @LastEditTime: 2021-07-11 09:27:24
+ * @LastEditTime: 2021-07-11 11:48:54
  */
 
 const mongoose = require("mongoose");
@@ -13,6 +13,7 @@ module.exports = () => {
     mongoose.connect(mongodbUrl, {
         user: mongodbUser,
         pass: mongodbPass,
+        dbName:"vite",
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })

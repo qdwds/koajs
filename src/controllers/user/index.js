@@ -1,7 +1,7 @@
 /*
  * @Description: 
  * @Date: 2021-07-11 09:48:48
- * @LastEditTime: 2021-07-11 10:01:41
+ * @LastEditTime: 2021-07-11 12:05:52
  */
 const jwt = require("jsonwebtoken");
 const { jwtScrentKey } = require("../../utils/jwt/secretKey");
@@ -38,7 +38,7 @@ const userLogin = (ctx) => {
  * @param {*} ctx 
  */
 const userGetAll = async (ctx) => {
-    await userSchema.find()
+    await userSchema.find({ isDel: false })
         .then(res => {
             ctx.body = {
                 status: true,
@@ -51,7 +51,47 @@ const userGetAll = async (ctx) => {
         })
 }
 
+/**
+ *  创建用户
+ * @param {*} ctx 
+ */
+const userCreate = async (ctx) => {
+    const { username, password } = ctx.request.body;
+    await userSchema.create({ username, password })
+        .then(res => {
+            ctx.body = {
+                status: true,
+                mes: "创建成功！"
+            }
+        })
+        .catch(err => {
+            ctx.body = {
+                status: false,
+                msg: "用户名已经存在！"
+            }
+        })
+}
+
+const userDel = async (ctx) => {
+    const { username } = ctx.request.body;
+    await userSchema.findOneAndUpdate({ username }, { isDel: true })
+        .then(res =>{
+            ctx.body = {
+                status: true,
+                msg:"删除成功！"
+            }
+        })
+        .catch(err =>{
+            ctx.body = {
+                status: false,
+                msg:"删除失败！"
+            }
+        })
+}
+
 module.exports = {
     userLogin,
     userGetAll,
+    userCreate,
+    userDel,
 }

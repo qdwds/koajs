@@ -1,7 +1,7 @@
 /*
  * @Description: websoket 连接测试
  * @Date: 2021-07-09 10:48:23
- * @LastEditTime: 2021-07-11 10:35:46
+ * @LastEditTime: 2021-07-11 13:56:18
  */
 
 
@@ -32,8 +32,6 @@ module.exports = () => {
         ws.send('websocket 连接成功 !');
         item = setInterval(() => {
             ws.send(`服务端：我主动发送 ${moment().format()}`)
-        }, 3000)
-
-
+        }, 1000)
     });
 }
