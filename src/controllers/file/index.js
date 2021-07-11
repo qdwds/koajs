@@ -1,30 +1,38 @@
 /*
- * @Description: 
- * @Date: 2021-07-07 11:34:30
- * @LastEditTime: 2021-07-08 11:48:03
+ * @Description: file
+ * @Date: 2021-07-11 09:56:13
+ * @LastEditTime: 2021-07-11 09:59:50
  */
-const router = require("koa-router")();
+
 const send = require('koa-send');
 const { resolve } = require("path");
-const { readFile } = require("fs")
-router.prefix("/file")
+const { readFile } = require("fs");
 
-//  文件流下载
-router.get("/blob", async (ctx, next) => {
+/**
+ * blob下载
+ * @param {*} ctx 
+ */
+const fileBlobDownload = async (ctx) => {
     const path = '/public/images/git.png'
     ctx.attachment(path);
     await send(ctx, path);
-})
+}
 
-//  根据地址文件下载
-router.get("/path", async (ctx, next) => {
+/**
+ * path下载
+ * @param {*} ctx 
+ */
+const filePathDownload = async (ctx) => {
     const path = "http://localhost:5000/images/weixin.zip";
     ctx.body = path
-})
+}
 
-router.get("/base64", (ctx) => {
+/**
+ * base64下载
+ * @param {*} ctx 
+ */
+const fileBase64Download = async (ctx) => {
     const path = resolve(__dirname, "../../public/images/weixin.zip");
-    console.log(path);
     readFile(path, 'binary', function (err, data) {
         if (err) {
             ctx.body = false
@@ -34,7 +42,10 @@ router.get("/base64", (ctx) => {
             ctx.body = img
         }
     });
-})
+}
 
-
-module.exports = router;
+module.exports = {
+    fileBlobDownload,
+    filePathDownload,
+    fileBase64Download,
+}
