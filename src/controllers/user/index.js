@@ -1,7 +1,7 @@
 /*
  * @Description: 
  * @Date: 2021-07-11 09:48:48
- * @LastEditTime: 2021-07-11 12:05:52
+ * @LastEditTime: 2021-07-29 15:15:00
  */
 const jwt = require("jsonwebtoken");
 const { jwtScrentKey } = require("../../utils/jwt/secretKey");
@@ -19,7 +19,9 @@ const userLogin = (ctx) => {
         const token = jwt.sign({
             username,
             password
-        }, jwtScrentKey, { expiresIn: "100d" })
+        },
+            jwtScrentKey,
+            { expiresIn: "7d" })
         ctx.body = {
             status: true,
             msg: "登陆成功",
@@ -75,16 +77,16 @@ const userCreate = async (ctx) => {
 const userDel = async (ctx) => {
     const { username } = ctx.request.body;
     await userSchema.findOneAndUpdate({ username }, { isDel: true })
-        .then(res =>{
+        .then(res => {
             ctx.body = {
                 status: true,
-                msg:"删除成功！"
+                msg: "删除成功！"
             }
         })
-        .catch(err =>{
+        .catch(err => {
             ctx.body = {
                 status: false,
-                msg:"删除失败！"
+                msg: "删除失败！"
             }
         })
 }

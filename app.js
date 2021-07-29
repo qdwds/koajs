@@ -1,7 +1,7 @@
 /*
  * @Description: app 主程序
  * @Date: 2021-07-07 10:54:16
- * @LastEditTime: 2021-07-11 10:56:42
+ * @LastEditTime: 2021-07-29 15:14:14
  */
 const Koa = require('koa');
 const app = new Koa();
@@ -31,18 +31,11 @@ app.use(json())
 app.use(logger())
 app.use(require('koa-static')(__dirname + '/public'))
 
-
-/**
- * routes
- */
-routes.forEach(r => {
-  app.use(r.routes(), r.allowedMethods());
-})
-
 /**
  * koa-jwt
+ * 校验需要放到路由前面引用
  */
-app.use(
+ app.use(
   koaJWT({
     secret: jwtScrentKey
   }).unless({
@@ -52,6 +45,15 @@ app.use(
     ]
   })
 )
+
+/**
+ * routes
+ */
+routes.forEach(r => {
+  app.use(r.routes(), r.allowedMethods());
+})
+
+
 
 /**
  * webSocket

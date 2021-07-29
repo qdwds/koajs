@@ -1,0 +1,59 @@
+
+
+@authToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicGFzc3dvcmQiOiJhZG1pbiIsImlhdCI6MTYyNzU0Mjk4MCwiZXhwIjoxNjI4MTQ3NzgwfQ.zAYIooCVbNRLS1An_4wDbriIOKbHJ6J7O0fMhMbAbYs
+
+### c => 创建
+POST  http://localhost:5000/curd/c
+Authorization: {{authToken}}
+content-type: application/json;charset=UTF-8
+
+{
+    "name": "红",
+    "age": 13,
+    "sex": "女",
+    "class": 2
+}
+
+### u => 更改
+PUT   http://localhost:5000/curd/u
+Authorization: {{authToken}}
+content-type: application/json;charset=UTF-8
+
+{
+    "id": "61025800d7e5911ee499e378",
+    "name" :"大大"
+}
+
+### r => 获取全部
+GET  http://localhost:5000/curd/rAll
+Authorization: {{authToken}}
+
+
+### 获取一项
+POST http://localhost:5000/curd/rOne
+Authorization: {{authToken}}
+content-type: application/json;charset=UTF-8
+
+{
+    "id": "61025800d7e5911ee499e378"
+}
+
+
+### d => 删除
+DELETE   http://localhost:5000/curd/dDelete
+Authorization: {{authToken}}
+content-type: application/json;charset=UTF-8
+
+{
+    "id": "61025801d7e5911ee499e37a"
+}
+
+
+### 删除 => isDel = true
+POST  http://localhost:5000/curd/dIsDel
+Authorization: {{authToken}}
+content-type: application/json;charset=UTF-8
+
+{
+    "id": "610257f0d7e5911ee499e376"
+}
